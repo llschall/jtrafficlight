@@ -2,7 +2,7 @@ package jtrafficlight.serial;
 
 import com.fazecast.jSerialComm.SerialPort;
 
-public class PortTest {
+public class Port {
 
     public Port() {
         for (SerialPort port : SerialPort.getCommPorts()) {
