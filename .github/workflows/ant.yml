@@ -24,4 +24,4 @@ jobs:
     - name: Hello GitHub
       run: echo Hello GitHub; pwd; ls -l
     - name: Build with Ant
-      run: ant -noinput -buildfile build.xml
+      run: ant -noinput -buildfile ant/build.xml
