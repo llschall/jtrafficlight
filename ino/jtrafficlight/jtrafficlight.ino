@@ -1,20 +1,17 @@
-
-uint8_t led_r = 7;
-uint8_t led_y = 8;
-uint8_t led_g = 9;
+#include "config.h"
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(BAUD);
 
   pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(led_r, OUTPUT);
-  pinMode(led_y, OUTPUT);
-  pinMode(led_g, OUTPUT);
+  pinMode(LED_R_PIN, OUTPUT);
+  pinMode(LED_Y_PIN, OUTPUT);
+  pinMode(LED_G_PIN, OUTPUT);
 
   digitalWrite(LED_BUILTIN, LOW);
-  digitalWrite(led_r, LOW);
-  digitalWrite(led_y, LOW);
-  digitalWrite(led_g, LOW);
+  digitalWrite(LED_R_PIN, LOW);
+  digitalWrite(LED_Y_PIN, LOW);
+  digitalWrite(LED_G_PIN, LOW);
 }
 
 int i = 0;
@@ -26,14 +23,15 @@ void loop() {
   }
 
   if (Serial.available() > 0) {
+    Serial.read();
     digitalWrite(LED_BUILTIN, HIGH);
     delay(1000);
     digitalWrite(LED_BUILTIN, LOW);
   }
 
-  digitalWrite(led_r, switchOn(1) ? HIGH : LOW);
-  digitalWrite(led_y, switchOn(64) ? HIGH : LOW);
-  digitalWrite(led_g, switchOn(32) ? HIGH : LOW);
+  digitalWrite(LED_R_PIN, switchOn(1) ? HIGH : HIGH);
+  digitalWrite(LED_Y_PIN, switchOn(64) ? HIGH : LOW);
+  digitalWrite(LED_G_PIN, switchOn(32) ? HIGH : LOW);
 
   delay(64);
   i++;
