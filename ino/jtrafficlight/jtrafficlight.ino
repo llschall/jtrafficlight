@@ -18,9 +18,7 @@ int i = 0;
 
 void loop() {
 
-  if (i == 64) {
-    i = 0;
-  }
+  if (i == 64) i = 0;
 
   if (Serial.available() > 0) {
     Serial.read();
