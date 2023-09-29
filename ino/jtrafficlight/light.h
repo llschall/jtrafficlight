@@ -18,9 +18,9 @@ void setup_impl() {
 
 int i = 0;
 
-int blink_r = 0;
-int blink_y = 0;
-int blink_g = 0;
+int blink_r = 1;
+int blink_y = 1;
+int blink_g = 1;
 
 char buffer[5];
 
