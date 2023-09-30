@@ -1,16 +1,10 @@
-package main.java.com.llschall.jtrafficlight.model;
+package com.llschall.jtrafficlight.model;
 
 import main.java.com.llschall.jtrafficlight.serial.Port;
 
 import java.io.StringWriter;
 
 public class TrafficLight {
-
-
-    LightMode modeR = LightMode.ON;
-    LightMode modeY = LightMode.ON;
-    LightMode modeG = LightMode.ON;
-
 
     Port port = new Port();
 

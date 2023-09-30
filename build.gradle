@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.llschall'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // https://mvnrepository.com/artifact/com.fazecast/jSerialComm
+    implementation group: 'com.fazecast', name: 'jSerialComm', version: '2.10.3'
+
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
