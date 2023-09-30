@@ -1,10 +1,10 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Demo" type="Application" factoryName="Application" nameIsGenerated="true">
-    <option name="MAIN_CLASS_NAME" value="jtrafficlight.demo.Demo" />
+    <option name="MAIN_CLASS_NAME" value="main.java.com.llschall.jtrafficlight.Demo" />
     <module name="jtrafficlight" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="jtrafficlight.demo.*" />
+        <option name="PATTERN" value="main.java.com.llschall.jtrafficlight.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>

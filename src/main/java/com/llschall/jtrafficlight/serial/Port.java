@@ -1,4 +1,4 @@
-package jtrafficlight.serial;
+package main.java.com.llschall.jtrafficlight.serial;
 
 import com.fazecast.jSerialComm.SerialPort;
 
@@ -25,6 +25,8 @@ public class Port {
                 return;
             }
         }
+        System.err.println("No port was found.");
+        System.exit(0);
     }
 
     public void sendMessage(String message) {

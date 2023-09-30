@@ -1,4 +1,4 @@
-package jtrafficlight.model;
+package main.java.com.llschall.jtrafficlight.model;
 
 public enum LightMode {
 

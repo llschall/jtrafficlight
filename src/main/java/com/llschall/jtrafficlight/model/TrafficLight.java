@@ -1,6 +1,6 @@
-package jtrafficlight.model;
+package main.java.com.llschall.jtrafficlight.model;
 
-import jtrafficlight.serial.Port;
+import main.java.com.llschall.jtrafficlight.serial.Port;
 
 import java.io.StringWriter;
 

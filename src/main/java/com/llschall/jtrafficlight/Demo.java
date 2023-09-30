@@ -1,7 +1,7 @@
-package jtrafficlight.demo;
+package main.java.com.llschall.jtrafficlight;
 
-import jtrafficlight.model.LightMode;
-import jtrafficlight.model.TrafficLight;
+import main.java.com.llschall.jtrafficlight.model.LightMode;
+import main.java.com.llschall.jtrafficlight.model.TrafficLight;
 
 public class Demo {
 
