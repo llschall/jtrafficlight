@@ -8,16 +8,23 @@ public class Demo {
     public static void main(String[] args) {
 
         TrafficLight trafficLight = new TrafficLight();
+        trafficLight.openPort();
 
         trafficLight.switchMode(LightMode.ON, LightMode.ON,LightMode.ON);
+        trafficLight.sendToPort();
         delay(2);
         trafficLight.switchMode(LightMode.ON, LightMode.OFF,LightMode.OFF);
+        trafficLight.sendToPort();
         delay(1);
         trafficLight.switchMode(LightMode.OFF, LightMode.ON,LightMode.OFF);
+        trafficLight.sendToPort();
         delay(1);
         trafficLight.switchMode(LightMode.OFF, LightMode.OFF,LightMode.ON);
+        trafficLight.sendToPort();
         delay(1);
         trafficLight.switchMode(LightMode.ON, LightMode.ON,LightMode.ON);
+        trafficLight.sendToPort();
+
     }
 
     static void delay(long seconds) {

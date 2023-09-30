@@ -6,14 +6,34 @@ import java.io.StringWriter;
 
 public class TrafficLight {
 
-    Port port = new Port();
+    LightMode modeR;
+    LightMode modeY;
+    LightMode modeG;
+
+    Port port = null;
+
+    public void openPort() {
+        port = new Port();
+    }
+
+    public void sendToPort() {
+        port.sendMessage(encode());
+    }
 
     public void switchMode(LightMode modeR, LightMode modeY, LightMode modeG) {
+        this.modeR = modeR;
+        this.modeY = modeY;
+        this.modeG = modeG;
+
+    }
+
+    String encode() {
         StringWriter writer = new StringWriter();
         writer.append("m");
         writer.append(modeR.buildMessage());
         writer.append(modeY.buildMessage());
         writer.append(modeG.buildMessage());
-        port.sendMessage(writer.toString());
+
+        return writer.toString();
     }
 }
