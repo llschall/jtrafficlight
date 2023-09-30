@@ -1,4 +1,5 @@
-# main.java.com.llschall.jtrafficlight
+# jtrafficlight
+
 Plug a traffic light to an Arduino board and control it from your Java application.
 
 Not yet functional... Work in progress !
