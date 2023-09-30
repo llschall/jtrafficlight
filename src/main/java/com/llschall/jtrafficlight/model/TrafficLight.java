@@ -16,15 +16,11 @@ public class TrafficLight {
         port = new Port();
     }
 
-    public void sendToPort() {
-        port.sendMessage(encode());
-    }
-
     public void switchMode(LightMode modeR, LightMode modeY, LightMode modeG) {
         this.modeR = modeR;
         this.modeY = modeY;
         this.modeG = modeG;
-
+        port.sendMessage(encode());
     }
 
     String encode() {
