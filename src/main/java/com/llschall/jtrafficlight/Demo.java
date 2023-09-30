@@ -20,7 +20,7 @@ public class Demo {
         trafficLight.switchMode(LightMode.ON, LightMode.ON,LightMode.ON);
     }
 
-    static void delayTEST(long seconds) {
+    static void delay(long seconds) {
 
         try {
             Thread.sleep(1000*seconds);
