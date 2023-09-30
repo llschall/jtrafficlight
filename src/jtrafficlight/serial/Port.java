@@ -9,6 +9,7 @@ public class Port {
     public Port() {
         for (SerialPort port : SerialPort.getCommPorts()) {
             String name = port.getSystemPortPath();
+
             if (name.startsWith("/dev/ttyUSB")) {
                 commPort = port;
                 System.out.println("Port [" + name + "] detected");
