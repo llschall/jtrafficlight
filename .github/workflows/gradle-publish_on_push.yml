@@ -22,8 +22,6 @@ jobs:
       packages: write
 
     steps:
-    - name: Hello
-      run: pwd; date;
 
     - name: Check out
       uses: actions/checkout@v3
@@ -36,8 +34,8 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-    - name: Info
-      run: ./gradlew tasks
+    - name: Setup Info
+      run: pwd;date;./gradlew tasks;
 
     - name: Build with Gradle
       uses: gradle/gradle-build-action@v2.6.0
