@@ -21,7 +21,8 @@ jobs:
 
     steps:
     - name: Hello
-      run: pwd; date;
+      run: ./gradlew tasks
+
     - name: Check out
       uses: actions/checkout@v3
 
