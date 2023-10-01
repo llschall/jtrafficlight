@@ -1,0 +1,24 @@
+{
+  "name": "jtrafficlight",
+  "version": "0.1.0",
+  "description": "Plug a traffic light on your Arduino board and control it from your Java application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/llschall/jtrafficlight.git"
+  },
+  "keywords": [
+    "Java",
+    "Arduino",
+    "CI"
+  ],
+  "author": "llschall",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/llschall/jtrafficlight/issues"
+  },
+  "homepage": "https://github.com/llschall/jtrafficlight#readme"
+}
