@@ -10,6 +10,8 @@ name: Gradle Package (push)
 on:
   push:
     branches: [ "main" ]
+  release:
+    types: [ created ]
 
 jobs:
   build:
