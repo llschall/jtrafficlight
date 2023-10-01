@@ -1,6 +1,8 @@
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.8.22'
+    id 'java-library'
+    id 'maven-publish'
 }
 
 group = 'com.llschall'
@@ -12,12 +14,11 @@ repositories {
 
 dependencies {
 
-    // https://mvnrepository.com/artifact/com.fazecast/jSerialComm
     implementation group: 'com.fazecast', name: 'jSerialComm', version: '2.10.3'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 test {
@@ -25,4 +26,19 @@ test {
 }
 kotlin {
     jvmToolchain(17)
+}
+
+publishing {
+    publications {
+        jtrafficlight(MavenPublication) {
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            name = 'myRepo'
+            url = layout.buildDirectory.dir("repo")
+        }
+    }
 }
