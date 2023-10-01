@@ -31,6 +31,7 @@ kotlin {
 publishing {
     publications {
         jtrafficlight(MavenPublication) {
+            /*
             pom {
                 licenses {
                     license {
@@ -39,6 +40,7 @@ publishing {
                     }
                 }
             }
+             */
             from components.java
         }
     }
