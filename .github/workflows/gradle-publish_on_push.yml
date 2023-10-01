@@ -34,7 +34,7 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-    - name: Setup Info
+    - name: Set up Info
       run: pwd;date;./gradlew tasks;
 
     - name: Build with Gradle
