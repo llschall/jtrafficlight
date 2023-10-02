@@ -5,6 +5,9 @@ plugins {
     id 'maven-publish'
 }
 
+group = 'llschall'
+version = '0.1.0'
+
 repositories {
     mavenCentral()
 }
