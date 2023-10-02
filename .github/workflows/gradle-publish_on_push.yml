@@ -26,7 +26,8 @@ jobs:
     - name: Check out
       uses: actions/checkout@v4
 
-    - uses: actions/delete-package-versions@v4
+    - name: Delete previous packages
+      uses: actions/delete-package-versions@v4
       with:
         min-versions-to-keep: 0
 
