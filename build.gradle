@@ -5,9 +5,6 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.llschall'
-version = '0.1.0'
-
 repositories {
     mavenCentral()
 }
@@ -29,16 +26,21 @@ kotlin {
 
 publishing {
     repositories {
-        println("*** Publishing ***")
         maven {
             name = "GitHubPackages"
-            url = "https://maven.pkg.github.com/factory23/llschall"
+            url = uri("https://maven.pkg.github.com/llschall/jtrafficlight")
             credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                println("*** User is ["+username+"] ***")
-                println("*** Actor is ["+System.getenv("github.actor")+"] ***")
-                password = System.getenv("GITHUB_TOKEN")
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                print("*** User is [")
+                print(username)
+                println("] ***")
+                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
             }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
         }
     }
 }
