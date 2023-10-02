@@ -51,4 +51,7 @@ jobs:
         gradle-version: 8.2
         arguments: publish
       env:
+        USERNAME: ${{ secrets.GITHUB_ACTOR }}
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
