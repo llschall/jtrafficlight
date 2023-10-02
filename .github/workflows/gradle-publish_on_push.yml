@@ -53,5 +53,6 @@ jobs:
       env:
         USERNAME: ${{ secrets.GITHUB_ACTOR }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
