@@ -42,8 +42,8 @@ publishing {
         }
     }
     publications {
-        gpr(MavenPublication) {
-            from(components.java)
+        jtrafficlight(MavenPublication) {
+            from components.java
         }
     }
 }
