@@ -24,7 +24,7 @@ test {
     useJUnitPlatform()
 }
 kotlin {
-    jvmToolchain(17)
+    jvmToolchain(11)
 }
 
 publishing {
@@ -36,6 +36,7 @@ publishing {
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 println("*** User is ["+username+"] ***")
+                println("*** Actor is ["+System.getenv("github.actor")+"] ***")
                 password = System.getenv("GITHUB_TOKEN")
             }
         }
