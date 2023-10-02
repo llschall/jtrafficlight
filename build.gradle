@@ -35,6 +35,7 @@ publishing {
             url = "https://maven.pkg.github.com/factory23/llschall"
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
+                println("*** User is ["+username+"] ***")
                 password = System.getenv("GITHUB_TOKEN")
             }
         }
