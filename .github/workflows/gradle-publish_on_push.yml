@@ -30,7 +30,6 @@ jobs:
       uses: actions/delete-package-versions@v4
       with:
         package-name: 'jtrafficlight'
-        package-type: 'gradle'
         min-versions-to-keep: 10
 
     - name: Set up JDK 11
