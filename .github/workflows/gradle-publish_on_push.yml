@@ -30,7 +30,7 @@ jobs:
       uses: actions/delete-package-versions@v4.1.1
       with:
         package-name: 'jtrafficlight'
-        min-versions-to-keep: 3
+        min-versions-to-keep: 0
         ignore-versions: '^(0|[1-9]\\d*)\\.0\\.0$'
 
     - name: Set up JDK 11
