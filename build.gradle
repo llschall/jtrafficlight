@@ -5,7 +5,7 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'llschall'
+group = 'factory23'
 version = '0.3.0'
 
 repositories {
