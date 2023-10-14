@@ -1,4 +1,4 @@
-package main.java.com.llschall.jtrafficlight.serial;
+package org.llschall.jtrafficlight.serial;
 
 import com.fazecast.jSerialComm.SerialPort;
 

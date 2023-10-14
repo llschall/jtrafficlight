@@ -1,4 +1,4 @@
-package com.llschall.jtrafficlight.model;
+package org.llschall.jtrafficlight.model;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

@@ -1,7 +1,7 @@
-package com.llschall.jtrafficlight
+package org.llschall.jtrafficlight
 
-import com.llschall.jtrafficlight.model.LightMode
-import com.llschall.jtrafficlight.model.TrafficLight
+import org.llschall.jtrafficlight.model.LightMode
+import org.llschall.jtrafficlight.model.TrafficLight
 
 object DemoK {
     @JvmStatic
