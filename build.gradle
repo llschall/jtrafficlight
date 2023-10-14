@@ -5,7 +5,7 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'factory23'
+group = 'llschall'
 version = '0.3.1'
 
 repositories {
@@ -46,8 +46,25 @@ publishing {
         }
     }
     publications {
-        jtrafficlight(MavenPublication) {
+        mavenJava(MavenPublication) {
             from components.java
+
+            pom {
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'llschall'
+                        name = 'Laurent Schall'
+                        email = 'llschall@gmx.com'
+                    }
+                }
+            }
         }
     }
 }
