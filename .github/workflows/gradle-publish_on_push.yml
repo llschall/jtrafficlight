@@ -49,7 +49,7 @@ jobs:
     # the publishing section of your build.gradle
     - name: Publish to GitHub Packages
       uses: gradle/gradle-build-action@v2.6.0
-      if: true # pause publication for now
+      if: false # pause publication for now
       with:
         arguments: publish
       env:
