@@ -51,9 +51,7 @@ jobs:
       uses: gradle/gradle-build-action@v2.6.0
       if: false # pause publication for now
       with:
-        arguments: publish
-        ossrh_user: 'xxx'
-        ossrh_pw: 'xxx'
+        arguments: javadoc # pause publication for now
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
