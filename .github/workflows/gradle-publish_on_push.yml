@@ -55,4 +55,6 @@ jobs:
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ossrh_user: xxx
+        ossrh_pw: xxx
 
