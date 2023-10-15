@@ -1,62 +1,52 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.8.10'
     id 'java-library'
     id 'maven-publish'
+    id 'signing'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.10'
 }
-
-group = 'llschall'
-version = '0.3.1'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation group: 'com.fazecast', name: 'jSerialComm', version: '2.10.3'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10'
+    implementation 'com.fazecast:jSerialComm:2.10.3'
 
-    testImplementation platform('org.junit:junit-bom:5.9.2')
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
 }
 
 test {
     useJUnitPlatform()
 }
-kotlin {
-    jvmToolchain(11)
-}
 
 publishing {
-    print("*** Version is [")
-    print(version)
-    println("] ***")
-
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/llschall/jtrafficlight")
-            credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                print("*** User is [")
-                print(username)
-                println("] ***")
-                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
-            }
-        }
-    }
     publications {
-        mavenJava(MavenPublication) {
-            from components.java
+        pub(MavenPublication) {
+            groupId = 'io.github.llschall'
+            artifactId = 'jtrafficlight'
+            version = '0.0.1-SNAPSHOT'
 
             pom {
+                signing {
+                    sign publishing.publications.pub
+                    sign configurations.archives
+                }
+                name = 'jtrafficlight'
+                description = 'Plug a traffic light to an Arduino board and control it from your Java application.'
                 licenses {
                     license {
                         name = 'The Apache License, Version 2.0'
                         url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
                     }
                 }
-
                 developers {
                     developer {
                         id = 'llschall'
@@ -64,7 +54,32 @@ publishing {
                         email = 'llschall@gmx.com'
                     }
                 }
+                scm {
+                    url = 'https://github.com/llschall/jtrafficlight.git'
+                }
             }
         }
     }
+    repositories {
+        maven {
+            credentials {
+                username "$ossrh_user"
+                password "$ossrh_pwd"
+            }
+            url "https://s01.oss.sonatype.org/content/repositories/snapshots"
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.pub
+}
+
+javadoc {
+    if (JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
+}
+kotlin {
+    jvmToolchain(17)
 }
