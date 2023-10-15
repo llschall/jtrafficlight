@@ -52,9 +52,9 @@ jobs:
       if: false # pause publication for now
       with:
         arguments: publish
+        ossrh_user: 'xxx'
+        ossrh_pw: 'xxx'
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        ossrh_user: 'xxx'
-        ossrh_pw: 'xxx'
 
