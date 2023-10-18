@@ -1,5 +1,4 @@
 plugins {
-    id 'java'
     id 'java-library'
     id 'maven-publish'
     id 'signing'
@@ -23,6 +22,10 @@ java {
     withSourcesJar()
 }
 
+jar {
+    manifest.attributes 'Main-Class': 'org.llschall.jtrafficlight.DeployIno'
+}
+
 test {
     useJUnitPlatform()
 }
@@ -30,13 +33,23 @@ test {
 boolean publish = project.hasProperty('ossrh_user');
 
 if (!publish) {
-    println('Publish skipped because no credential is provided.')
+    println('=== Publish skipped because no credential is provided. ===')
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir "ino"
+        }
+    }
 }
 
 publishing {
     if (publish) {
         publications {
             pub(MavenPublication) {
+                from components.java
+
                 groupId = 'io.github.llschall'
                 artifactId = 'jtrafficlight'
                 version = '0.0.1-SNAPSHOT'
