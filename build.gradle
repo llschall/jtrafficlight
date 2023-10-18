@@ -27,46 +27,54 @@ test {
     useJUnitPlatform()
 }
 
-publishing {
-    publications {
-        pub(MavenPublication) {
-            groupId = 'io.github.llschall'
-            artifactId = 'jtrafficlight'
-            version = '0.0.1-SNAPSHOT'
+boolean publish = project.hasProperty('ossrh_user');
 
-            pom {
-                signing {
-                    sign publishing.publications.pub
-                    sign configurations.archives
-                }
-                name = 'jtrafficlight'
-                description = 'Plug a traffic light to an Arduino board and control it from your Java application.'
-                licenses {
-                    license {
-                        name = 'The Apache License, Version 2.0'
-                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+if (!publish) {
+    println('Publish skipped because no credential is provided.')
+}
+
+publishing {
+    if (publish) {
+        publications {
+            pub(MavenPublication) {
+                groupId = 'io.github.llschall'
+                artifactId = 'jtrafficlight'
+                version = '0.0.1-SNAPSHOT'
+
+                pom {
+                    signing {
+                        sign publishing.publications.pub
+                        sign configurations.archives
                     }
-                }
-                developers {
-                    developer {
-                        id = 'llschall'
-                        name = 'Laurent Schall'
-                        email = 'llschall@gmx.com'
+                    name = 'jtrafficlight'
+                    description = 'Plug a traffic light to an Arduino board and control it from your Java application.'
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
                     }
-                }
-                scm {
-                    url = 'https://github.com/llschall/jtrafficlight.git'
+                    developers {
+                        developer {
+                            id = 'llschall'
+                            name = 'Laurent Schall'
+                            email = 'llschall@gmx.com'
+                        }
+                    }
+                    scm {
+                        url = 'https://github.com/llschall/jtrafficlight.git'
+                    }
                 }
             }
         }
-    }
-    repositories {
-        maven {
-            credentials {
-                username "$ossrh_user"
-                password "$ossrh_pwd"
+        repositories {
+            maven {
+                credentials {
+                    username "$ossrh_user"
+                    password "$ossrh_pwd"
+                }
+                url "https://s01.oss.sonatype.org/content/repositories/snapshots"
             }
-            url "https://s01.oss.sonatype.org/content/repositories/snapshots"
         }
     }
 }
