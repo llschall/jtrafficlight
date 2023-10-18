@@ -76,11 +76,10 @@ publishing {
                 url "https://s01.oss.sonatype.org/content/repositories/snapshots"
             }
         }
+        signing {
+            sign publishing.publications.pub
+        }
     }
-}
-
-signing {
-    sign publishing.publications.pub
 }
 
 javadoc {
