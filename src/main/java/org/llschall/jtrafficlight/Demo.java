@@ -3,8 +3,14 @@ package org.llschall.jtrafficlight;
 import org.llschall.jtrafficlight.model.LightMode;
 import org.llschall.jtrafficlight.model.TrafficLight;
 
+/**
+ * A Demo class to show some available features
+ */
 public class Demo {
 
+    /**
+     * @param args No args supported
+     */
     public static void main(String[] args) {
 
         TrafficLight trafficLight = new TrafficLight();

@@ -2,10 +2,18 @@ package org.llschall.jtrafficlight.serial;
 
 import com.fazecast.jSerialComm.SerialPort;
 
+/**
+ * A {@link Port} takes care of the serial connection and communication
+ */
 public class Port {
 
+    // The port of the jSerialComm framework
     SerialPort commPort;
 
+    /**
+     * Searches and opens the port for the serial communication
+     * Also installs a shutdown hook to ensure the port is closed when the JVM exits
+     */
     public Port() {
         for (SerialPort port : SerialPort.getCommPorts()) {
             String name = port.getSystemPortPath();
@@ -29,6 +37,9 @@ public class Port {
         System.exit(0);
     }
 
+    /**
+     * @param message The message to be sent to the Arduino board
+     */
     public void sendMessage(String message) {
         char[] chars = message.toCharArray();
         byte[] bytes = new byte[chars.length+1];

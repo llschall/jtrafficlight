@@ -4,6 +4,9 @@ import org.llschall.jtrafficlight.serial.Port;
 
 import java.io.StringWriter;
 
+/**
+ * A {@link TrafficLight} wraps the state of a Light plugged to Arduino
+ */
 public class TrafficLight {
 
     LightMode modeR;
@@ -12,10 +15,18 @@ public class TrafficLight {
 
     Port port = null;
 
+    /**
+     * Searches and opens the port for the serial communication
+     */
     public void openPort() {
         port = new Port();
     }
 
+    /**
+     * @param modeR The desired mode on the red LED
+     * @param modeY The desired mode on the yellow LED
+     * @param modeG The desired mode on the green LED
+     */
     public void switchMode(LightMode modeR, LightMode modeY, LightMode modeG) {
         this.modeR = modeR;
         this.modeY = modeY;
