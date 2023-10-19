@@ -61,6 +61,7 @@ publishing {
                     }
                     name = 'jtrafficlight'
                     description = 'Plug a traffic light to an Arduino board and control it from your Java application.'
+                    url = 'https://github.com/llschall/jtrafficlight'
                     licenses {
                         license {
                             name = 'The Apache License, Version 2.0'
