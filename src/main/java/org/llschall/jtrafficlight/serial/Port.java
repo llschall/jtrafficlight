@@ -15,26 +15,41 @@ public class Port {
      * Also installs a shutdown hook to ensure the port is closed when the JVM exits
      */
     public Port() {
-        for (SerialPort port : SerialPort.getCommPorts()) {
-            String name = port.getSystemPortPath();
 
+        commPort = scanPort(SerialPort.getCommPorts());
+
+        if (commPort == null) {
+            System.err.println("No port was found.");
+            System.exit(0);
+        }
+
+        String name = commPort.getSystemPortName();
+        System.out.println("Port [" + name + "] detected");
+        boolean b = commPort.openPort();
+        if (!b) {
+            System.err.println("Port "+commPort.getSystemPortPath()+" cannot be opened");
+            System.exit(-1);
+        }
+
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            commPort.closePort();
+            System.out.println("Port closed");
+        }));
+    }
+
+    private SerialPort scanPort(SerialPort[] ports) {
+        for (SerialPort port : ports) {
+            String desc = port.getDescriptivePortName();
+            if (desc.contains("CH340") || desc.contains("USB")) {
+                return port;
+            }
+
+            String name = port.getSystemPortPath();
             if (name.startsWith("/dev/ttyUSB")) {
-                commPort = port;
-                System.out.println("Port [" + name + "] detected");
-                boolean b = commPort.openPort();
-                if (!b) {
-                    System.err.println("Port cannot be opened");
-                    System.exit(0);
-                }
-                Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-                  commPort.closePort();
-                    System.out.println("Port closed");
-                }));
-                return;
+                return port;
             }
         }
-        System.err.println("No port was found.");
-        System.exit(0);
+        return null;
     }
 
     /**

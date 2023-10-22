@@ -5,9 +5,13 @@ import org.llschall.jtrafficlight.serial.Port;
 import java.io.StringWriter;
 
 /**
- * A {@link TrafficLight} wraps the state of a Light plugged to Arduino
+ * A {@link JTrafficLight} wraps the state of a Light plugged to Arduino
+ *
+ * <a href="https://github.com/llschall/jtrafficlight/releases/tag/v0.0.1">
+ *     Make sure jtrafficlight_ino.zip is deployed on the Arduino Board
+ * </a>
  */
-public class TrafficLight {
+public class JTrafficLight {
 
     LightMode modeR;
     LightMode modeY;
