@@ -12,7 +12,7 @@ public enum LightMode {
     /**
      * The LED is switched on
      */
-    ON(9);
+    ON(8);
 
     final int value;
 
@@ -20,7 +20,7 @@ public enum LightMode {
         this.value = value;
     }
 
-    String buildMessage() {
+    String buildMsg() {
         return Integer.toString(value);
     }
 }

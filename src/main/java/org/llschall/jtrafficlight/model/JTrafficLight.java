@@ -1,8 +1,12 @@
 package org.llschall.jtrafficlight.model;
 
+import org.llschall.jtrafficlight.JTrafficLightException;
 import org.llschall.jtrafficlight.serial.Port;
 
 import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  * A {@link JTrafficLight} wraps the state of a Light plugged to Arduino
@@ -13,17 +17,29 @@ import java.io.StringWriter;
  */
 public class JTrafficLight {
 
-    LightMode modeR;
-    LightMode modeY;
-    LightMode modeG;
+    final Map<Lights, Light> map;
 
-    Port port = null;
+    Port port;
 
-    /**
-     * Searches and opens the port for the serial communication
-     */
-    public void openPort() {
-        port = new Port();
+    public JTrafficLight() {
+        this(new Port());
+    }
+
+    JTrafficLight(Port port) {
+        map = new HashMap<>();
+        for (Lights value : Lights.values()) {
+            map.put(value, new Light());
+        }
+
+        this.port = port;
+    }
+
+    public void deactivate(Lights light) {
+        map.get(light).active = false;
+    }
+
+    public void switchMode(LightMode modeR, LightMode modeY, LightMode modeG) {
+        switchMode(Lights.Light_234, modeR, modeY, modeG);
     }
 
     /**
@@ -31,20 +47,31 @@ public class JTrafficLight {
      * @param modeY The desired mode on the yellow LED
      * @param modeG The desired mode on the green LED
      */
-    public void switchMode(LightMode modeR, LightMode modeY, LightMode modeG) {
-        this.modeR = modeR;
-        this.modeY = modeY;
-        this.modeG = modeG;
-        port.sendMessage(encode());
+    public void switchMode(Lights light, LightMode modeR, LightMode modeY, LightMode modeG) {
+
+        Light light1 = map.get(light);
+
+        if (!light1.active) {
+            throw new JTrafficLightException("Cannot switch "+light+" because it has been deactivated");
+        }
+
+        light1.modeR = modeR;
+        light1.modeY = modeY;
+        light1.modeG = modeG;
+
+        if (port != null) {
+            port.sendMessage(encode());
+        }
     }
 
     String encode() {
         StringWriter writer = new StringWriter();
         writer.append("m");
-        writer.append(modeR.buildMessage());
-        writer.append(modeY.buildMessage());
-        writer.append(modeG.buildMessage());
-
+        for (Lights light : Lights.values()) {
+            Light light1 = map.get(light);
+            writer.append(light1.buildMsg());
+        }
         return writer.toString();
     }
 }
+

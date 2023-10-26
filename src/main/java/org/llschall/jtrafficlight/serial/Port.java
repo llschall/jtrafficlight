@@ -16,6 +16,7 @@ public class Port {
      */
     public Port() {
 
+        System.out.println("*** Check Serial Port ***");
         commPort = scanPort(SerialPort.getCommPorts());
 
         if (commPort == null) {
