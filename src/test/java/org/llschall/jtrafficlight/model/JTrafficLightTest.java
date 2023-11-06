@@ -6,6 +6,11 @@ import org.junit.jupiter.api.Test;
 public class JTrafficLightTest {
 
     @Test
+    public void testVersion() {
+        Assertions.assertEquals(JTrafficLight.VERSION, JTrafficLight.getVersion());
+    }
+
+    @Test
     public void testAllOn() {
 
         JTrafficLight light = new JTrafficLight(null);

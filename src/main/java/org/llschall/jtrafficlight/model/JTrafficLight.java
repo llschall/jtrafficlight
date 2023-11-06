@@ -17,9 +17,15 @@ import java.util.Map;
  */
 public class JTrafficLight {
 
+    final static String VERSION = "0.0.2-SNAPSHOT";
+
     final Map<Lights, Light> map;
 
     Port port;
+
+    public static String getVersion() {
+        return VERSION;
+    }
 
     public JTrafficLight() {
         this(new Port());
