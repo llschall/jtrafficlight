@@ -26,18 +26,10 @@ test {
     useJUnitPlatform()
 }
 
-boolean publish = project.hasProperty('ossrh_user');
+boolean publish = project.hasProperty('ossrh_user')
 
 if (!publish) {
     println('=== Publish skipped because no credential is provided. ===')
-}
-
-sourceSets {
-    main {
-        resources {
-            srcDir "ino"
-        }
-    }
 }
 
 publishing {
@@ -48,7 +40,7 @@ publishing {
 
                 groupId = 'io.github.llschall'
                 artifactId = 'jtrafficlight'
-                version = '0.0.2-SNAPSHOT'
+                version = '0.0.2'
 
                 pom {
                     signing {
