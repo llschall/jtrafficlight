@@ -7,7 +7,7 @@ import org.llschall.jtrafficlight.model.Lights;
 /**
  * A class to check the serial connection
  */
-public class CheckSerialPort {
+public class LightCheck {
 
     /**
      * @param args No args supported

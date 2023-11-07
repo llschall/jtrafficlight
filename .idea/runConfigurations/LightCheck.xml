@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="CheckSerialPort" type="Application" factoryName="Application" nameIsGenerated="true">
-    <option name="MAIN_CLASS_NAME" value="org.llschall.jtrafficlight.CheckSerialPort" />
+  <configuration default="false" name="LightCheck" type="Application" factoryName="Application" nameIsGenerated="true">
+    <option name="MAIN_CLASS_NAME" value="org.llschall.jtrafficlight.LightCheck" />
     <module name="jtrafficlight.main" />
     <extension name="coverage">
       <pattern>
