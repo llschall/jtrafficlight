@@ -2,7 +2,6 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
-    id 'org.jetbrains.kotlin.jvm' version '1.9.10'
 }
 
 repositories {
@@ -40,7 +39,7 @@ publishing {
 
                 groupId = 'io.github.llschall'
                 artifactId = 'jtrafficlight'
-                version = '0.0.2'
+                version = '0.0.2-SNAPSHOT'
 
                 pom {
                     signing {
@@ -89,6 +88,4 @@ javadoc {
         options.addBooleanOption('html5', true)
     }
 }
-kotlin {
-    jvmToolchain(17)
-}
+
