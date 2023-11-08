@@ -4,7 +4,7 @@ Plug a traffic light to an Arduino board and control it from your Java applicati
 
 ## Java
 
-* If you use Gradle, add the following statement to your **build.gradle** file:
+* If you use Gradle, add the following dependency to your **build.gradle** file:
 
 _implementation 'io.github.llschall:jtrafficlight:v0.0.3'_
 
