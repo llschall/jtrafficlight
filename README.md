@@ -8,7 +8,7 @@ Plug a traffic light to an Arduino board and control it from your Java applicati
 
 _implementation 'io.github.llschall:jtrafficlight:v0.0.3'_
 
-* Or if you do not use Gradle, you can dowload the jar from the page hereafter, and add it to your classpath.
+* Or if you do not use Gradle, you can download the jar from the page hereafter, and add it to your classpath.
   
 https://repo.maven.apache.org/maven2/io/github/llschall/jtrafficlight/0.0.3
 
