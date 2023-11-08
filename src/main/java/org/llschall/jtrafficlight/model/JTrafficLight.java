@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class JTrafficLight {
 
-    final static String VERSION = "0.0.3";
+    final static String VERSION = "0.0.4";
 
     final Map<Lights, Light> map;
 
