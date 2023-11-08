@@ -32,6 +32,14 @@ public class Port {
             System.exit(-1);
         }
 
+        try {
+            Thread.sleep(2_000); // The card might reboot after the new connection
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("Port [" + name + "] ready");
+
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             commPort.closePort();
             System.out.println("Port closed");

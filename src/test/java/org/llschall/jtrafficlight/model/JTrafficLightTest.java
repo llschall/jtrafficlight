@@ -19,8 +19,19 @@ public class JTrafficLightTest {
         Assertions.assertEquals("m888000000", light.encode());
 
         light.switchMode(Lights.Light_567, LightMode.ON, LightMode.ON, LightMode.ON);
-        light.deactivate(Lights.Light_234);
-        Assertions.assertEquals("m999888000", light.encode());
+        Assertions.assertEquals("m888888000", light.encode());
+    }
+
+    @Test
+    public void testBlinking() {
+
+        JTrafficLight light = new JTrafficLight(null);
+
+        light.switchMode(LightMode.BLINK_5, LightMode.ON, LightMode.BLINK_4);
+        Assertions.assertEquals("m584000000", light.encode());
+
+        light.switchMode(Lights.Light_567, LightMode.ON, LightMode.BLINK_2, LightMode.ON);
+        Assertions.assertEquals("m584828000", light.encode());
     }
 
 }

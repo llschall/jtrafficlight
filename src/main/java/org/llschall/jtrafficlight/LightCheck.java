@@ -18,8 +18,8 @@ public class LightCheck {
 
         Lights light = Lights.Light_234;
 
-        System.out.println("***      all off      ***");
-        trafficLight.switchMode(light, LightMode.OFF, LightMode.OFF,LightMode.OFF);
+        System.out.println("***      all on       ***");
+        trafficLight.switchMode(light, LightMode.ON, LightMode.ON,LightMode.ON);
         delay();
 
         System.out.println("***     red only      ***");
@@ -34,8 +34,18 @@ public class LightCheck {
         trafficLight.switchMode(light, LightMode.OFF, LightMode.OFF,LightMode.ON);
         delay();
 
-        System.out.println("***      all on       ***");
-        trafficLight.switchMode(light, LightMode.ON, LightMode.ON,LightMode.ON);
+        System.out.println("***   all blinking    ***");
+        trafficLight.switchMode(light, LightMode.BLINK_1, LightMode.BLINK_2,LightMode.BLINK_3);
+        delay();
+        delay();
+        trafficLight.switchMode(light, LightMode.BLINK_4, LightMode.BLINK_4,LightMode.BLINK_4);
+        delay();
+        delay();
+        delay();
+
+        System.out.println("***      all off      ***");
+        trafficLight.switchMode(light, LightMode.OFF, LightMode.OFF,LightMode.OFF);
+        delay();
 
         System.out.println("***  Check Finished   ***");
     }
@@ -43,7 +53,7 @@ public class LightCheck {
     static private void delay() {
 
         try {
-            Thread.sleep(4_000);
+            Thread.sleep(2_000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

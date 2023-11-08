@@ -18,10 +18,21 @@ bool switchOn(int d);
 void setup_impl() {
   Serial.begin(BAUD);
 
+  pinMode(LED_0_R_PIN, OUTPUT);
+  pinMode(LED_0_Y_PIN, OUTPUT);
+  pinMode(LED_0_G_PIN, OUTPUT);
+
+  pinMode(LED_1_R_PIN, OUTPUT);
+  pinMode(LED_1_Y_PIN, OUTPUT);
+  pinMode(LED_1_G_PIN, OUTPUT);
+
+  pinMode(LED_2_R_PIN, OUTPUT);
+  pinMode(LED_2_Y_PIN, OUTPUT);
+  pinMode(LED_2_G_PIN, OUTPUT);
+
   pinMode(LED_BUILTIN, OUTPUT);
 
   digitalWrite(LED_BUILTIN, LOW);
-
 }
 
 int i = 0;
@@ -63,37 +74,17 @@ void loop_impl() {
     blink_2_g = buffer[8] - '0';
   }
 
-  if (blink_0_r < 9) {
+  digitalWrite(LED_0_R_PIN, switchOn(blink_0_r) ? HIGH : LOW);
+  digitalWrite(LED_0_Y_PIN, switchOn(blink_0_y) ? HIGH : LOW);
+  digitalWrite(LED_0_G_PIN, switchOn(blink_0_g) ? HIGH : LOW);
 
-    pinMode(LED_0_R_PIN, OUTPUT);
-    pinMode(LED_0_Y_PIN, OUTPUT);
-    pinMode(LED_0_G_PIN, OUTPUT);
+  digitalWrite(LED_1_R_PIN, switchOn(blink_1_r) ? HIGH : LOW);
+  digitalWrite(LED_1_Y_PIN, switchOn(blink_1_y) ? HIGH : LOW);
+  digitalWrite(LED_1_G_PIN, switchOn(blink_1_g) ? HIGH : LOW);
 
-    digitalWrite(LED_0_R_PIN, switchOn(blink_0_r) ? HIGH : LOW);
-    digitalWrite(LED_0_Y_PIN, switchOn(blink_0_y) ? HIGH : LOW);
-    digitalWrite(LED_0_G_PIN, switchOn(blink_0_g) ? HIGH : LOW);
-  }
-
-  if (blink_1_r < 9) {
-    
-    pinMode(LED_1_R_PIN, OUTPUT);
-    pinMode(LED_1_Y_PIN, OUTPUT);
-    pinMode(LED_1_G_PIN, OUTPUT);
-
-    digitalWrite(LED_1_R_PIN, switchOn(blink_1_r) ? HIGH : LOW);
-    digitalWrite(LED_1_Y_PIN, switchOn(blink_1_y) ? HIGH : LOW);
-    digitalWrite(LED_1_G_PIN, switchOn(blink_1_g) ? HIGH : LOW);
-  }
-
-  if (blink_2_r < 9) {
-    pinMode(LED_2_R_PIN, OUTPUT);
-    pinMode(LED_2_Y_PIN, OUTPUT);
-    pinMode(LED_2_G_PIN, OUTPUT);
-
-    digitalWrite(LED_2_R_PIN, switchOn(blink_2_r) ? HIGH : LOW);
-    digitalWrite(LED_2_Y_PIN, switchOn(blink_2_y) ? HIGH : LOW);
-    digitalWrite(LED_2_G_PIN, switchOn(blink_2_g) ? HIGH : LOW);
-  }
+  digitalWrite(LED_2_R_PIN, switchOn(blink_2_r) ? HIGH : LOW);
+  digitalWrite(LED_2_Y_PIN, switchOn(blink_2_y) ? HIGH : LOW);
+  digitalWrite(LED_2_G_PIN, switchOn(blink_2_g) ? HIGH : LOW);
 
   delay(64);
   i++;

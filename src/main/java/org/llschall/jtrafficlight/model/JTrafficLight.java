@@ -1,6 +1,5 @@
 package org.llschall.jtrafficlight.model;
 
-import org.llschall.jtrafficlight.JTrafficLightException;
 import org.llschall.jtrafficlight.serial.Port;
 
 import java.io.StringWriter;
@@ -46,13 +45,6 @@ public class JTrafficLight {
     }
 
     /**
-     * @param light The light to deactivate
-     */
-    public void deactivate(Lights light) {
-        map.get(light).active = false;
-    }
-
-    /**
      * @param modeR The desired mode of the Red light
      * @param modeY The desired mode of the Yellow light
      * @param modeG The desired mode of the Green light
@@ -70,10 +62,6 @@ public class JTrafficLight {
     public void switchMode(Lights light, LightMode modeR, LightMode modeY, LightMode modeG) {
 
         Light light1 = map.get(light);
-
-        if (!light1.active) {
-            throw new JTrafficLightException("Cannot switch "+light+" because it has been deactivated");
-        }
 
         light1.modeR = modeR;
         light1.modeY = modeY;

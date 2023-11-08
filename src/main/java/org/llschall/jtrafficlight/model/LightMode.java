@@ -12,7 +12,28 @@ public enum LightMode {
     /**
      * The LED is switched on
      */
-    ON(8);
+    ON(8),
+
+    /**
+     * The fastest blinking speed
+     */
+    BLINK_1(1),
+    /**
+     * 2 times slower than BLINK_1
+     */
+    BLINK_2(2),
+    /**
+     * 2 times slower than BLINK_2
+     */
+    BLINK_3(3),
+    /**
+     * 2 times slower than BLINK_3
+     */
+    BLINK_4(4),
+    /**
+     * 2 times slower than BLINK_4
+     */
+    BLINK_5(5);
 
     final int value;
 
