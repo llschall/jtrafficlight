@@ -1,12 +1,10 @@
-# jtrafficlight
-
 Plug a traffic light to an Arduino board and control it from your Java application.
 
-# Deployment:
+# Deployment
 
 - Arduino
 
-Download the **jtrafficlight_ino.zip** from the page herefater. Unzip it and load it to your Aduino Board
+Download the **jtrafficlight_ino.zip** from the page hereafter. Unzip and load it (without any modification) to your Aduino Board using the standard Arduino IDE.
 
 https://github.com/llschall/jtrafficlight/releases/tag/v0.0.2
 
