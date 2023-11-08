@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  * A {@link JTrafficLight} wraps the state of a Light plugged to Arduino
- * <a href="https://github.com/llschall/jtrafficlight/releases/tag/v0.0.1">
+ * <a href="https://github.com/llschall/jtrafficlight/releases/tag/v0.0.4">
  *     Make sure jtrafficlight_ino.zip is deployed on the Arduino Board
  * </a>
  */
