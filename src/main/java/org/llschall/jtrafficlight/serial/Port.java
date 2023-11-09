@@ -8,7 +8,7 @@ import com.fazecast.jSerialComm.SerialPort;
 public class Port {
 
     // The port of the jSerialComm framework
-    SerialPort commPort;
+    final SerialPort commPort;
 
     /**
      * Searches and opens the port for the serial communication

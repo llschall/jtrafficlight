@@ -19,7 +19,7 @@ public class JTrafficLight {
 
     final Map<Lights, Light> map;
 
-    Port port;
+    final Port port;
 
     /**
      * @return The jtrafficlight library version

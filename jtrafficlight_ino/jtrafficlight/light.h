@@ -86,7 +86,7 @@ void loop_impl() {
   digitalWrite(LED_2_Y_PIN, switchOn(blink_2_y) ? HIGH : LOW);
   digitalWrite(LED_2_G_PIN, switchOn(blink_2_g) ? HIGH : LOW);
 
-  delay(64);
+  delay(99);
   i++;
 }
 
