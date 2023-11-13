@@ -29,6 +29,15 @@ public class JTrafficLight {
     }
 
     /**
+     * @return Information related to the deployment and perhaps more in the future.
+     */
+    public static String getInfo() {
+        return "The files to upload to the Arduino board are available in the jtrafficlight_ino.zip file.\n" +
+                "The jtrafficlight_ino.zip is available here:\n" +
+                "https://github.com/llschall/jtrafficlight/releases/tag/v"+VERSION;
+    }
+
+    /**
      * Main entry point of the JTrafficLight API
      */
     public JTrafficLight() {

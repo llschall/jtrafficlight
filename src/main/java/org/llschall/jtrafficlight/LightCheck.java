@@ -1,8 +1,7 @@
 package org.llschall.jtrafficlight;
 
-import org.llschall.jtrafficlight.model.LightMode;
 import org.llschall.jtrafficlight.model.JTrafficLight;
-import org.llschall.jtrafficlight.model.Lights;
+import org.llschall.jtrafficlight.model.LightMode;
 
 /**
  * A class to check the serial connection
@@ -14,37 +13,37 @@ public class LightCheck {
      */
     public static void main(String[] args) {
 
+        System.out.println(JTrafficLight.getInfo());
+
         JTrafficLight trafficLight = new JTrafficLight();
 
-        Lights light = Lights.Light_234;
-
         System.out.println("***      all on       ***");
-        trafficLight.switchMode(light, LightMode.ON, LightMode.ON,LightMode.ON);
+        trafficLight.switchMode(LightMode.ON, LightMode.ON,LightMode.ON);
         delay();
 
         System.out.println("***     red only      ***");
-        trafficLight.switchMode(light, LightMode.ON, LightMode.OFF,LightMode.OFF);
+        trafficLight.switchMode(LightMode.ON, LightMode.OFF,LightMode.OFF);
         delay();
 
         System.out.println("***    yellow only    ***");
-        trafficLight.switchMode(light, LightMode.OFF, LightMode.ON,LightMode.OFF);
+        trafficLight.switchMode(LightMode.OFF, LightMode.ON,LightMode.OFF);
         delay();
 
         System.out.println("***    green only     ***");
-        trafficLight.switchMode(light, LightMode.OFF, LightMode.OFF,LightMode.ON);
+        trafficLight.switchMode(LightMode.OFF, LightMode.OFF,LightMode.ON);
         delay();
 
         System.out.println("***   all blinking    ***");
-        trafficLight.switchMode(light, LightMode.BLINK_1, LightMode.BLINK_2,LightMode.BLINK_3);
+        trafficLight.switchMode(LightMode.BLINK_1, LightMode.BLINK_2,LightMode.BLINK_3);
         delay();
         delay();
-        trafficLight.switchMode(light, LightMode.BLINK_4, LightMode.BLINK_4,LightMode.BLINK_4);
+        trafficLight.switchMode(LightMode.BLINK_4, LightMode.BLINK_4,LightMode.BLINK_4);
         delay();
         delay();
         delay();
 
         System.out.println("***      all off      ***");
-        trafficLight.switchMode(light, LightMode.OFF, LightMode.OFF,LightMode.OFF);
+        trafficLight.switchMode(LightMode.OFF, LightMode.OFF,LightMode.OFF);
         delay();
 
         System.out.println("***  Check Finished   ***");
