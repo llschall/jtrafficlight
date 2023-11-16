@@ -1,4 +1,4 @@
-// Version 0.0.6
+// Version 1.0.0
 
 #include "light.h"
 

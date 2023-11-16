@@ -14,6 +14,7 @@ int LED_2_Y_PIN = 9;
 int LED_2_G_PIN = 10;
 
 bool switchOn(int d);
+void fireConnectionLost();
 
 void setup_impl() {
   Serial.begin(BAUD);
@@ -51,9 +52,11 @@ int blink_2_g = 1;
 
 char buffer[11];
 
+long last = millis();
+
 void loop_impl() {
 
-  if (i == 64) i = 0;
+  if (i == 1024) i = 0;
 
   if (Serial.available() >= 11) {
     Serial.readBytes(buffer, 1);
@@ -72,6 +75,12 @@ void loop_impl() {
     blink_2_r = buffer[6] - '0';
     blink_2_y = buffer[7] - '0';
     blink_2_g = buffer[8] - '0';
+
+    last = millis();
+  }
+
+  if ((millis() - last) > 40000) {
+    fireConnectionLost();
   }
 
   digitalWrite(LED_0_R_PIN, switchOn(blink_0_r) ? HIGH : LOW);
@@ -86,7 +95,7 @@ void loop_impl() {
   digitalWrite(LED_2_Y_PIN, switchOn(blink_2_y) ? HIGH : LOW);
   digitalWrite(LED_2_G_PIN, switchOn(blink_2_g) ? HIGH : LOW);
 
-  delay(99);
+  delay(200);
   i++;
 }
 
@@ -103,4 +112,19 @@ bool switchOn(int d) {
     }
   }
   return on;
+}
+
+void fireConnectionLost() {
+
+  blink_0_r = 1;
+  blink_0_y = 1;
+  blink_0_g = 1;
+
+  blink_1_r = 1;
+  blink_1_y = 1;
+  blink_1_g = 1;
+
+  blink_2_r = 1;
+  blink_2_y = 1;
+  blink_2_g = 1;
 }
