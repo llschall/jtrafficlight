@@ -38,7 +38,7 @@ publishing {
 
                 groupId = 'io.github.llschall'
                 artifactId = 'jtrafficlight'
-                version = '1.0.0-SNAPSHOT'
+                version = '1.0.1-SNAPSHOT'
 
                 pom {
                     signing {
