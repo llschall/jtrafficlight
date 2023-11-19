@@ -1,4 +1,8 @@
+![image](https://github.com/llschall/jtrafficlight/blob/main/doc/jtrafficlight_512.bmp?raw=true)
+
 Plug a traffic light to an Arduino board and control it from your Java application.
+
+<img src="https://github.com/llschall/jtrafficlight/blob/main/doc/20231118_182137.jpg" width="400" height="400">
 
 # Deployment
 
@@ -18,8 +22,14 @@ Download the **jtrafficlight_ino.zip** file from the page hereafter. Unzip and l
 
 https://github.com/llschall/jtrafficlight/releases/tag/v1.0.0
 
+Plug your traffic light as follows:
+- Connect the GNDs together
+- Connect Arduino pin D2 to the red led
+- Connect Arduino pin D3 to the yellow led
+- Connect Arduino pin D4 to the green led
+
+<img src="https://github.com/llschall/jtrafficlight/blob/main/doc/20231118_182622.jpg" width="400" height="400">
+
 # JTrafficLight API
 
-Everything is controlled from the Java side, no changes are required in the Arduino code.
-
-![](https://github.com/llschall/jtrafficlight/blob/main/jtrafficlight_512.bmp?raw=true)
+Everything is controlled from the Java side, no changes are required in the Arduino code
