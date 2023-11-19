@@ -30,6 +30,6 @@ Plug your traffic light as follows:
 
 <img src="https://github.com/llschall/jtrafficlight/blob/main/doc/20231118_182622.jpg" width="400" height="400">
 
-# JTrafficLight API
+# JTrafficLight Java API
 
 Everything is controlled from the Java side, no changes are required in the Arduino code
