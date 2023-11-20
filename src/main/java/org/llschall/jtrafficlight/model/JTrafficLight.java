@@ -10,12 +10,12 @@ import java.util.Map;
 
 /**
  * A {@link JTrafficLight} wraps the state of a Light plugged to Arduino
- * <a href="https://github.com/llschall/jtrafficlight/releases/tag/v1.0.1">
+ * <a href="https://github.com/llschall/jtrafficlight/releases/tag/v1.0.2">
  *     Make sure jtrafficlight_ino.zip is deployed on the Arduino Board
  * </a>
  */
 public class JTrafficLight {
-    final static String VERSION = "1.0.1";
+    final static String VERSION = "1.0.2";
     final static Map<Lights, Light> map;
     static final IPort port;
 

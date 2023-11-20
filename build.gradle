@@ -38,7 +38,7 @@ publishing {
 
                 groupId = 'io.github.llschall'
                 artifactId = 'jtrafficlight'
-                version = '1.0.1-SNAPSHOT'
+                version = '1.0.2-SNAPSHOT'
 
                 pom {
                     signing {
@@ -81,10 +81,3 @@ publishing {
         }
     }
 }
-
-javadoc {
-    if (JavaVersion.current().isJava9Compatible()) {
-        options.addBooleanOption('html5', true)
-    }
-}
-
