@@ -44,10 +44,18 @@ public class JTrafficLight {
                 "https://github.com/llschall/jtrafficlight/releases/tag/v"+VERSION;
     }
 
+    /**
+     * @return The light plugged to pins 2,3,4
+     */
     public static Light get() {
         return get(Lights.Light_234);
     }
 
+    /**
+     *
+     * @param light The physical light (3 leds) plugged to the Arduino board
+     * @return The light mapped to the Lights enum instance
+     */
     public static Light get(Lights light) {
         return map.get(light);
     }

@@ -1,5 +1,9 @@
 package org.llschall.jtrafficlight.serial;
 
+/**
+ * A {@link PortProvider} provides the {@link Port} for the serial communication
+ * with the Arduino board.
+ */
 public class PortProvider {
 
     private static boolean mock;
@@ -13,6 +17,9 @@ public class PortProvider {
         mock = true;
     }
 
+    /**
+     * @return the {@link PortProvider} of the runtime
+     */
     public static PortProvider get() {
         if (mock) {
             return new PortProviderMock();
@@ -20,6 +27,9 @@ public class PortProvider {
         return INSTANCE;
     }
 
+    /**
+     * @return the {@link Port} of the runtime
+     */
     public IPort provide() {
         if (port == null) {
             port = new Port();
@@ -32,11 +42,8 @@ public class PortProvider {
 class PortProviderMock extends PortProvider {
     @Override
     public IPort provide() {
-        return new IPort() {
-            @Override
-            public void sendMessage(String message) {
-                // do nothing
-            }
+        return message -> {
+            // do nothing
         };
     }
 }

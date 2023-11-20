@@ -5,10 +5,10 @@ import org.llschall.jtrafficlight.serial.PortProvider;
 
 import java.io.StringWriter;
 
+/**
+ * A {@link Light} represents a physical light (3 leds) plugged to the Arduino board
+ */
 public class Light {
-
-
-
     LightMode modeR = LightMode.OFF;
     LightMode modeY = LightMode.OFF;
     LightMode modeG = LightMode.OFF;
