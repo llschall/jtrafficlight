@@ -1,18 +1,30 @@
 package org.llschall.jtrafficlight.model;
 
+import org.llschall.jtrafficlight.serial.Port;
+import org.llschall.jtrafficlight.serial.PortProvider;
+
 import java.io.StringWriter;
 
-class Light {
+public class Light {
+
+
 
     LightMode modeR = LightMode.OFF;
     LightMode modeY = LightMode.OFF;
     LightMode modeG = LightMode.OFF;
 
-    String buildMsg() {
-        StringWriter writer = new StringWriter();
-        writer.append(modeR.buildMsg());
-        writer.append(modeY.buildMsg());
-        writer.append(modeG.buildMsg());
-        return writer.toString();
+    /**
+     * @param modeR The desired mode of the Red light
+     * @param modeY The desired mode of the Yellow light
+     * @param modeG The desired mode of the Green light
+     */
+    public void switchMode(LightMode modeR, LightMode modeY, LightMode modeG) {
+
+        this.modeR = modeR;
+        this.modeY = modeY;
+        this.modeG = modeG;
+
+        JTrafficLight.fireUpdate();
     }
+
 }

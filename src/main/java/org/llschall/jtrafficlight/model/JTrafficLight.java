@@ -1,11 +1,12 @@
 package org.llschall.jtrafficlight.model;
 
+import org.llschall.jtrafficlight.serial.IPort;
 import org.llschall.jtrafficlight.serial.Port;
+import org.llschall.jtrafficlight.serial.PortProvider;
 
 import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
-
 
 /**
  * A {@link JTrafficLight} wraps the state of a Light plugged to Arduino
@@ -14,12 +15,18 @@ import java.util.Map;
  * </a>
  */
 public class JTrafficLight {
-
     final static String VERSION = "1.0.1";
+    final static Map<Lights, Light> map;
+    static final IPort port;
 
-    final Map<Lights, Light> map;
+    static {
+        map = new HashMap<>();
+        for (Lights value : Lights.values()) {
+            map.put(value, new Light());
+        }
 
-    final Port port;
+        port = PortProvider.get().provide();
+    }
 
     /**
      * @return The jtrafficlight library version
@@ -37,58 +44,29 @@ public class JTrafficLight {
                 "https://github.com/llschall/jtrafficlight/releases/tag/v"+VERSION;
     }
 
-    /**
-     * Main entry point of the JTrafficLight API
-     */
-    public JTrafficLight() {
-        this(new Port());
+    public static Light get() {
+        return get(Lights.Light_234);
     }
 
-    JTrafficLight(Port port) {
-        map = new HashMap<>();
-        for (Lights value : Lights.values()) {
-            map.put(value, new Light());
-        }
-
-        this.port = port;
+    public static Light get(Lights light) {
+        return map.get(light);
     }
 
-    /**
-     * @param modeR The desired mode of the Red light
-     * @param modeY The desired mode of the Yellow light
-     * @param modeG The desired mode of the Green light
-     */
-    public void switchMode(LightMode modeR, LightMode modeY, LightMode modeG) {
-        switchMode(Lights.Light_234, modeR, modeY, modeG);
-    }
-
-    /**
-     * @param light The light to switch
-     * @param modeR The desired mode on the red LED
-     * @param modeY The desired mode on the yellow LED
-     * @param modeG The desired mode on the green LED
-     */
-    public void switchMode(Lights light, LightMode modeR, LightMode modeY, LightMode modeG) {
-
-        Light light1 = map.get(light);
-
-        light1.modeR = modeR;
-        light1.modeY = modeY;
-        light1.modeG = modeG;
-
-        if (port != null) {
-            port.sendMessage(encode());
-        }
-    }
-
-    String encode() {
+    static String encode() {
         StringWriter writer = new StringWriter();
         writer.append("m");
         for (Lights light : Lights.values()) {
-            Light light1 = map.get(light);
-            writer.append(light1.buildMsg());
+            Light light1 = get(light);
+            writer.append(light1.modeR.buildMsg());
+            writer.append(light1.modeY.buildMsg());
+            writer.append(light1.modeG.buildMsg());
         }
         return writer.toString();
     }
+
+    static void fireUpdate() {
+        port.sendMessage(encode());
+    }
+
 }
 

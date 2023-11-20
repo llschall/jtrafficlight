@@ -1,6 +1,7 @@
 package org.llschall.jtrafficlight;
 
 import org.llschall.jtrafficlight.model.JTrafficLight;
+import org.llschall.jtrafficlight.model.Light;
 import org.llschall.jtrafficlight.model.LightMode;
 
 /**
@@ -15,7 +16,7 @@ public class LightCheck {
 
         System.out.println(JTrafficLight.getInfo());
 
-        JTrafficLight trafficLight = new JTrafficLight();
+        Light trafficLight = JTrafficLight.get();
 
         System.out.println("***      all on       ***");
         trafficLight.switchMode(LightMode.ON, LightMode.ON,LightMode.ON);
@@ -34,18 +35,15 @@ public class LightCheck {
         delay();
 
         System.out.println("***   all blinking    ***");
-        trafficLight.switchMode(LightMode.BLINK_1, LightMode.BLINK_2,LightMode.BLINK_3);
+        trafficLight.switchMode(LightMode.BLINK_2, LightMode.BLINK_3,LightMode.BLINK_4);
         delay();
         delay();
-        trafficLight.switchMode(LightMode.BLINK_4, LightMode.BLINK_4,LightMode.BLINK_4);
         delay();
         delay();
         delay();
 
         System.out.println("***      all off      ***");
         trafficLight.switchMode(LightMode.OFF, LightMode.OFF,LightMode.OFF);
-        delay();
-
         System.out.println("***  Check Finished   ***");
     }
 

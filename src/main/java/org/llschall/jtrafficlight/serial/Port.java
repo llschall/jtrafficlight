@@ -5,7 +5,7 @@ import com.fazecast.jSerialComm.SerialPort;
 /**
  * A {@link Port} takes care of the serial connection and communication
  */
-public class Port {
+public class Port implements IPort {
 
     // The port of the jSerialComm framework
     final SerialPort commPort;
