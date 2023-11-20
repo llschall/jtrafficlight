@@ -100,7 +100,8 @@ void loop_impl() {
 }
 
 bool switchOn(int d) {
-
+  
+  if (d == 8) return true;
   if (d == 0) return false;
 
   int p = pow(2, d);
