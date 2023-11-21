@@ -1,80 +1,45 @@
 package org.llschall.jtrafficlight.model;
 
-import org.llschall.jtrafficlight.serial.IPort;
-import org.llschall.jtrafficlight.serial.Port;
-import org.llschall.jtrafficlight.serial.PortProvider;
-
-import java.io.StringWriter;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
- * A {@link JTrafficLight} wraps the state of a Light plugged to Arduino
- * <a href="https://github.com/llschall/jtrafficlight/releases/tag/v1.0.2">
- *     Make sure jtrafficlight_ino.zip is deployed on the Arduino Board
- * </a>
+ * An instance of this enum represents a traffic light connected to the Arduino board
  */
-public class JTrafficLight {
-    final static String VERSION = "1.0.2";
-    final static Map<Lights, Light> map;
-    static final IPort port;
+public enum JTrafficLight {
 
-    static {
-        map = new HashMap<>();
-        for (Lights value : Lights.values()) {
-            map.put(value, new Light());
-        }
+    /**
+     * The traffic light connected to the pins 2,3,4
+     */
+    Light_234, // pins 2,3,4
 
-        port = PortProvider.get().provide();
+    /**
+     * The traffic light connected to the pins 5,6,7
+     */
+    Light_567, // pins 5,6,7
+    /**
+     * The traffic light connected to the pins 8,9,10
+     */
+    Light_89X; // pins 8,9,10
+
+    LightMode modeR = LightMode.OFF;
+    LightMode modeY = LightMode.OFF;
+    LightMode modeG = LightMode.OFF;
+
+    /**
+     * @param modeR The desired mode of the Red light
+     * @param modeY The desired mode of the Yellow light
+     * @param modeG The desired mode of the Green light
+     */
+    public void switchMode(LightMode modeR, LightMode modeY, LightMode modeG) {
+        this.modeR = modeR;
+        this.modeY = modeY;
+        this.modeG = modeG;
+        JTrafficSystem.get().fireUpdate();
     }
 
     /**
-     * @return The jtrafficlight library version
+     * @return The default light, that might be enough for basic projects
      */
-    public static String getVersion() {
-        return VERSION;
-    }
-
-    /**
-     * @return Information related to the deployment and perhaps more in the future.
-     */
-    public static String getInfo() {
-        return "The files to upload to the Arduino board are available in the jtrafficlight_ino.zip file.\n" +
-                "The jtrafficlight_ino.zip is available here:\n" +
-                "https://github.com/llschall/jtrafficlight/releases/tag/v"+VERSION;
-    }
-
-    /**
-     * @return The light plugged to pins 2,3,4
-     */
-    public static Light get() {
-        return get(Lights.Light_234);
-    }
-
-    /**
-     *
-     * @param light The physical light (3 leds) plugged to the Arduino board
-     * @return The light mapped to the Lights enum instance
-     */
-    public static Light get(Lights light) {
-        return map.get(light);
-    }
-
-    static String encode() {
-        StringWriter writer = new StringWriter();
-        writer.append("m");
-        for (Lights light : Lights.values()) {
-            Light light1 = get(light);
-            writer.append(light1.modeR.buildMsg());
-            writer.append(light1.modeY.buildMsg());
-            writer.append(light1.modeG.buildMsg());
-        }
-        return writer.toString();
-    }
-
-    static void fireUpdate() {
-        port.sendMessage(encode());
+    public static JTrafficLight get() {
+        return Light_234;
     }
 
 }
-
