@@ -14,7 +14,7 @@ int LED_2_Y_PIN = 9;
 int LED_2_G_PIN = 10;
 
 bool switchOn(int d);
-void fireConnectionLost();
+void switchAll(int m);
 
 void setup_impl() {
   Serial.begin(BAUD);
@@ -50,6 +50,8 @@ int blink_2_r = 1;
 int blink_2_y = 1;
 int blink_2_g = 1;
 
+int build_in = 1;
+
 char buffer[11];
 
 long last = millis();
@@ -77,12 +79,20 @@ void loop_impl() {
     blink_2_g = buffer[8] - '0';
 
     last = millis();
+    build_in = 0;
   }
 
-  if ((millis() - last) > 40000) {
-    fireConnectionLost();
-  }
+  long l = millis() - last;
 
+  if (l > 4000) {
+    if (l > 18000) {
+      switchAll(0);
+    } else {
+      build_in = 1;
+      switchAll(1);
+    }
+  }
+  
   digitalWrite(LED_0_R_PIN, switchOn(blink_0_r) ? HIGH : LOW);
   digitalWrite(LED_0_Y_PIN, switchOn(blink_0_y) ? HIGH : LOW);
   digitalWrite(LED_0_G_PIN, switchOn(blink_0_g) ? HIGH : LOW);
@@ -95,12 +105,14 @@ void loop_impl() {
   digitalWrite(LED_2_Y_PIN, switchOn(blink_2_y) ? HIGH : LOW);
   digitalWrite(LED_2_G_PIN, switchOn(blink_2_g) ? HIGH : LOW);
 
+  digitalWrite(LED_BUILTIN, switchOn(build_in) ? HIGH : LOW);
+
   delay(200);
   i++;
 }
 
 bool switchOn(int d) {
-  
+
   if (d == 8) return true;
   if (d == 0) return false;
 
@@ -115,17 +127,17 @@ bool switchOn(int d) {
   return on;
 }
 
-void fireConnectionLost() {
+void switchAll(int m) {
 
-  blink_0_r = 1;
-  blink_0_y = 1;
-  blink_0_g = 1;
+  blink_0_r = m;
+  blink_0_y = m;
+  blink_0_g = m;
 
-  blink_1_r = 1;
-  blink_1_y = 1;
-  blink_1_g = 1;
+  blink_1_r = m;
+  blink_1_y = m;
+  blink_1_g = m;
 
-  blink_2_r = 1;
-  blink_2_y = 1;
-  blink_2_g = 1;
+  blink_2_r = m;
+  blink_2_y = m;
+  blink_2_g = m;
 }
