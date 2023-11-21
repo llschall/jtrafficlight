@@ -84,8 +84,8 @@ void loop_impl() {
 
   long l = millis() - last;
 
-  if (l > 4000) {
-    if (l > 18000) {
+  if (l > 40000) {
+    if (l > 180000) {
       switchAll(0);
     } else {
       build_in = 1;
