@@ -1,4 +1,6 @@
-// Version 1.0.2
+// https://github.com/llschall/jtrafficlight
+// JTrafficLight v1.0.3
+
 
 #include "light.h"
 

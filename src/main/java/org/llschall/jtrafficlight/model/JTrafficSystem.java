@@ -7,7 +7,7 @@ import java.io.StringWriter;
 
 /**
  * A {@link JTrafficSystem} wraps the state of a Light plugged to Arduino
- * <a href="https://github.com/llschall/jtrafficlight/releases/tag/v1.0.2">
+ * <a href="https://github.com/llschall/jtrafficlight/releases/tag/v1.0.3">
  *     Make sure jtrafficlight_ino.zip is deployed on the Arduino Board
  * </a>
  */
@@ -15,7 +15,7 @@ public class JTrafficSystem {
     /**
      * The version of the JTrafficLight library
      */
-    public final static String VERSION = "1.0.2";
+    public final static String VERSION = "1.0.3";
     final IPort port;
     static final JTrafficSystem INSTANCE = new JTrafficSystem();
     private JTrafficSystem() {
