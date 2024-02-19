@@ -23,7 +23,7 @@ Download the **jtrafficlight_ino.zip** file from the page hereafter. Unzip and l
 https://github.com/llschall/jtrafficlight/releases/tag/v1.0.2
 
 Plug your traffic light as follows:
-- Connect the GNDs together
+- Connect the GND pins together
 - Connect Arduino pin D2 to the red led
 - Connect Arduino pin D3 to the yellow led
 - Connect Arduino pin D4 to the green led
